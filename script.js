@@ -8,26 +8,43 @@ var failAttempts = 0;
 mixing();
 
 function play() {
-  for (let i = 1; i <= 16; i++) {
+    for (let i = 1; i <= 16; i++) {
     document.getElementById(`card${i}`).style.transform = "rotateY(0deg)";
   }
-  setTimeout(() => {
+    setTimeout(() => {
     mixing();
   }, 700);
   attempt = 0;
   failAttempts = 0;
+  var timeleft = 10;
+  var downloadTimer = setInterval(function(){
+    if(timeleft <= 0){
+      clearInterval(downloadTimer);
+      alert(`Time is out, you have scored ${score} points!` )
+    }
+    document.getElementById("timer").innerHTML = `Time: ${timeleft}`;
+    timeleft -= 1;
+  }, 1000);
 }
 
-function restart() {
-  for (let i = 1; i <= 16; i++) {
-    document.getElementById(`card${i}`).style.transform = "rotateY(0deg)";
-  }
-  setTimeout(() => {
-    mixing();
-  }, 700);
-  attempt = 0;
-  failAttempts = 0;
-}
+// function restart() {
+//   for (let i = 1; i <= 16; i++) {
+//     document.getElementById(`card${i}`).style.transform = "rotateY(0deg)";
+//   }
+//   setTimeout(() => {
+//     mixing();
+//   }, 700);
+//   attempt = 0;
+//   failAttempts = 0;
+//   var timeleft = 20;
+//   var downloadTimer = setInterval(function(){
+//     if(timeleft <= 0){
+//       clearInterval(downloadTimer);
+//     }
+//     document.getElementById("timer").value = 20 - timeleft;
+//     timeleft -= 1;
+//   }, 1000);
+// }
 
 function mixing(maximum = 16) {
   let position = [];
@@ -80,6 +97,8 @@ function turn(element) {
     // alert("You are bad in the memery game! Back to zero!");
     failAttempts = 0;
   }
+  document.getElementById('fa').innerHTML = `FA: ${failAttempts}`;
+document.getElementById('scoretable').innerHTML = `Score: ${score}`;
   console.log(`scores:`, score);
   console.log(`fail attempts:`, failAttempts);
 }
@@ -95,3 +114,6 @@ function clicking(allow) {
     ].style.pointerEvents = `${allow}`;
   }
 }
+
+document.getElementById('fa').innerHTML = `FA: ${failAttempts}`;
+document.getElementById('scoretable').innerHTML = `Score: ${score}`;

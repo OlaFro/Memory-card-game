@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="heading">
+    <img src="./src/Group 1(1).png" id="logo" alt="logo">
+    </div>
     <div class="container">
+      
       <div
         class="flip-card"
         data-name="meme1"
@@ -248,9 +252,14 @@
           </div>
         </div>
       </div>
-    </div>
-    <button onclick="play()">Play</button>
-    <button onclick="restart()">NewGame</button>
+      <div class="container2">
+        <div class="timer" id="timer">Time: </div>
+        <button onclick="play()">Play</button>
+        <div class="scoretable" id="scoretable"></div>
+        <div class="fa" id="fa"></div>
+      </div>
+    </div>  
+    
     <script src="script.js"></script>
   </body>
 </html>
