@@ -41,7 +41,7 @@ function turn(element) {
     storeValue = element.childNodes[1].id;
     console.log(attempt);
   } else if (attempt == 2) {
-    clicking(false);
+    clicking("none");
     console.log(attempt);
     attempt = 0;
     b = element.dataset.name;
@@ -49,12 +49,11 @@ function turn(element) {
       setTimeout(() => {
         element.childNodes[1].style.transform = "rotateY(0deg)";
         document.getElementById(`${storeValue}`).style.transform = "";
-      }, 650);
+        clicking("auto");
+      }, 1500);
       console.log(false);
-      clicking(true);
     } else {
-      console.log(true);
-      clicking(true);
+      clicking("");
     }
   }
 }
@@ -65,6 +64,8 @@ function clicking(allow) {
     i < document.getElementsByClassName("flip-card").length;
     i++
   ) {
-    document.getElementsByClassName("flip-card")[i].onclick = allow;
+    document.getElementsByClassName("flip-card")[
+      i
+    ].style.pointerEvents = `${allow}`;
   }
 }
