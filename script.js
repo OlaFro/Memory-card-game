@@ -2,15 +2,31 @@ var attempt = 0;
 var a, b;
 var storeValue;
 let allCards = [];
+var score = 0;
+var failAttempts = 0;
 
 mixing();
 
 function play() {
-  mixing();
+  for (let i = 1; i <= 16; i++) {
+    document.getElementById(`card${i}`).style.transform = "rotateY(0deg)";
+  }
+  setTimeout(() => {
+    mixing();
+  }, 700);
+  attempt = 0;
+  failAttempts = 0;
 }
 
 function restart() {
-  mixing();
+  for (let i = 1; i <= 16; i++) {
+    document.getElementById(`card${i}`).style.transform = "rotateY(0deg)";
+  }
+  setTimeout(() => {
+    mixing();
+  }, 700);
+  attempt = 0;
+  failAttempts = 0;
 }
 
 function mixing(maximum = 16) {
@@ -39,10 +55,10 @@ function turn(element) {
   if (attempt == 1) {
     a = element.dataset.name;
     storeValue = element.childNodes[1].id;
-    console.log(attempt);
+    console.log(`attempt:`, attempt);
   } else if (attempt == 2) {
     clicking("none");
-    console.log(attempt);
+    console.log(`attempt:`, attempt);
     attempt = 0;
     b = element.dataset.name;
     if (a != b) {
@@ -50,12 +66,22 @@ function turn(element) {
         element.childNodes[1].style.transform = "rotateY(0deg)";
         document.getElementById(`${storeValue}`).style.transform = "";
         clicking("auto");
-      }, 1500);
+      }, 1000);
       console.log(false);
+      failAttempts++;
     } else {
       clicking("");
+      score += 12.5;
+      failAttempts = 0;
     }
   }
+  if (failAttempts === 4) {
+    score = 0;
+    // alert("You are bad in the memery game! Back to zero!");
+    failAttempts = 0;
+  }
+  console.log(`scores:`, score);
+  console.log(`fail attempts:`, failAttempts);
 }
 
 function clicking(allow) {
