@@ -3,7 +3,17 @@ var a, b;
 var storeValue;
 let allCards = [];
 
-function mixing(maximum) {
+mixing();
+
+function play() {
+  mixing();
+}
+
+function restart() {
+  mixing();
+}
+
+function mixing(maximum = 16) {
   let position = [];
   let random = 0;
 
@@ -22,8 +32,6 @@ function mixing(maximum) {
     ).style.gridArea = `item${position[i]}`;
   }
 }
-
-mixing(16);
 
 function turn(element) {
   element.childNodes[1].style.transform = "rotateY(180deg)";
