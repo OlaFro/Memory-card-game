@@ -1,17 +1,23 @@
 var attempt = 0;
 var a, b;
+var storeValue;
 function turn(x, element) {
-  document.getElementById(`card${x}`).style.transform = "rotateY(180deg)";
+element.childNodes[1].style.transform = "rotateY(180deg)";
   attempt++;
   if (attempt == 1) {
     a = element.dataset.name;
+    storeValue = element.childNodes[1].id;
+    console.log(attempt);
   } else if (attempt == 2) {
+    console.log(attempt);
     attempt = 0;
     b = element.dataset.name;
-    if (a == b) {
-      document.getElementById(`card${x}`).style.transform = "";
+    if (a != b) {
+     setTimeout(()=>{element.childNodes[1].style.transform = "rotateY(0deg)";
+    document.getElementById(`${storeValue}`).style.transform = ""},2000 );
+      console.log(false);
     } else {
-      document.getElementById(`card${x}`).style.transform = "rotateY(0deg)";
+      console.log(true);
     }
   }
 }
