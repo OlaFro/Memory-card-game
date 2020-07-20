@@ -1,8 +1,9 @@
-var attempt = 1;
+var attempt = 0;
 var a, b;
 var storeValue;
 let allCards = [];
 
+let allCards = [];
 function turn(x, element) {
   element.childNodes[1].style.transform = "rotateY(180deg)";
   attempt++;
