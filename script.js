@@ -1,7 +1,6 @@
 var attempt = 0;
 var a, b;
 var storeValue;
-let allCards = [];
 
 let allCards = [];
 function turn(x, element) {
