@@ -1,9 +1,31 @@
 var attempt = 0;
 var a, b;
 var storeValue;
-
 let allCards = [];
-function turn(x, element) {
+
+function mixing(maximum) {
+  let position = [];
+  let random = 0;
+
+  for (let i = 0; i < maximum; i++) {
+    do {
+      random = Math.floor(Math.random() * maximum + 1);
+    } while (position.includes(random) === true);
+    position[i] = random;
+  }
+
+  console.log(position);
+
+  for (let i = 0; i < maximum; i++) {
+    document.getElementById(
+      `flip-card${i + 1}`
+    ).style.gridArea = `item${position[i]}`;
+  }
+}
+
+mixing(16);
+
+function turn(element) {
   element.childNodes[1].style.transform = "rotateY(180deg)";
   attempt++;
   if (attempt == 1) {
@@ -25,5 +47,3 @@ function turn(x, element) {
     }
   }
 }
-
-function turnBack() {}
