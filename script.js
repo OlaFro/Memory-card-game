@@ -4,6 +4,7 @@ var storeValue;
 let allCards = [];
 var score = 0;
 var failAttempts = 0;
+var timeleft = 0;
 
 mixing();
 
@@ -16,7 +17,7 @@ function play() {
   }, 700);
   attempt = 0;
   failAttempts = 0;
-  var timeleft = 75;
+  timeleft = 75;
   var downloadTimer = setInterval(function(){
     if(timeleft <= 0){
       clearInterval(downloadTimer);
@@ -27,24 +28,18 @@ function play() {
   }, 1000);
 }
 
-// function restart() {
-//   for (let i = 1; i <= 16; i++) {
-//     document.getElementById(`card${i}`).style.transform = "rotateY(0deg)";
-//   }
-//   setTimeout(() => {
-//     mixing();
-//   }, 700);
-//   attempt = 0;
-//   failAttempts = 0;
-//   var timeleft = 20;
-//   var downloadTimer = setInterval(function(){
-//     if(timeleft <= 0){
-//       clearInterval(downloadTimer);
-//     }
-//     document.getElementById("timer").value = 20 - timeleft;
-//     timeleft -= 1;
-//   }, 1000);
-// }
+function restart() {
+  timeleft = 0;
+  for (let i = 1; i <= 16; i++) {
+    document.getElementById(`card${i}`).style.transform = "rotateY(0deg)";
+  }
+  setTimeout(() => {
+    mixing();
+  }, 700);
+  attempt = 0;
+  failAttempts = 0;
+  
+}
 
 function mixing(maximum = 16) {
   let position = [];
@@ -52,7 +47,7 @@ function mixing(maximum = 16) {
 
   for (let i = 0; i < maximum; i++) {
     do {
-      random = Math.floor(Math.random() * maximum + 1);
+      random = Math.floor(Math.random() * maximum + 1;
     } while (position.includes(random) === true);
     position[i] = random;
   }
