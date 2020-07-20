@@ -47,7 +47,7 @@ function mixing(maximum = 16) {
 
   for (let i = 0; i < maximum; i++) {
     do {
-      random = Math.floor(Math.random() * maximum + 1;
+      random = Math.floor(Math.random() * maximum + 1)
     } while (position.includes(random) === true);
     position[i] = random;
   }
